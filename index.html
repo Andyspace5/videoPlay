@@ -6,16 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .initVideo{
+            width : 640px;
+            height: 480px;
+            z-index: 999;
+            left:30%;
+            position: fixed;
+            margin: auto;
+        }
+    </style>
 </head>
 
 <body>
-    <video></video>
+    <video class="initVideo"></video>
     <button id="start">开始</button>
     <button id="end">结束</button>
     <script>
-        
-
-
         var MediaUtils = {
             /**
              * 获取用户媒体设备(处理兼容的问题)
@@ -116,6 +123,7 @@
         // 播放录制的音频
         function playRecord() {
             console.log(recorderFile);
+            alert(recorderFile.type+'-----'+recorderFile.size)
             var url = URL.createObjectURL(recorderFile);
             var dom = document.createElement(videoEnabled ? 'video' : 'audio');
             dom.autoplay = true;
@@ -161,7 +169,6 @@
         }
 
         document.querySelector('#start').onclick = () => {
-            
             startPlay()
         }
         document.querySelector('#end').onclick = () => {
